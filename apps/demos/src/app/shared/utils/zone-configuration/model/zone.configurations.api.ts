@@ -739,12 +739,12 @@ interface ZoneTestConfigurations {
  *
  * These configurations can be defined on the `Zone` object after
  * importing zone.js to change behaviors. The differences between
- * the `ZoneRuntimeConfigurations` and the `ZoneGlobalConfigurations` are,
+ * the `RxZoneRuntimeConfigurations` and the `RxZoneGlobalConfigurations` are,
  *
- * 1. `ZoneGlobalConfigurations` must be defined on the `global/window` object before importing
+ * 1. `RxZoneGlobalConfigurations` must be defined on the `global/window` object before importing
  * `zone.js`. The value of the configuration cannot be changed at runtime.
  *
- * 2. `ZoneRuntimeConfigurations` must be defined on the `Zone` object after importing `zone.js`.
+ * 2. `RxZoneRuntimeConfigurations` must be defined on the `Zone` object after importing `zone.js`.
  * You can change the value of this configuration at runtime.
  *
  */

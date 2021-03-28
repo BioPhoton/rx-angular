@@ -14,7 +14,7 @@ export function valuesComparer<T>(
 
   if (Array.isArray(compare)) {
     const sanitizedKeys = compare.filter((k) => isKeyOf<T>(k));
-    return !!sanitizedKeys.length
+    return sanitizedKeys.length
       ? sanitizedKeys.every((k) => original[k] === incoming[k])
       : defaultCompare(original, incoming);
   }

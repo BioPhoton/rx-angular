@@ -14,18 +14,17 @@ import {
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Hooks, intersectionObserver } from '../../../cdk';
 
-import {
-  createTemplateManager,
-  hotFlatten,
-  RxNotificationKind,
-  RxTemplateManager, RxStrategyProvider,
-} from '@rx-angular/cdk';
+import { RxNotificationKind } from '@rx-angular/cdk/notifications';
+import { createTemplateManager, RxTemplateManager } from '@rx-angular/cdk/template-management';
+
 import {
   RxIfVisibleTemplateNames,
   rxIfVisibleTemplateNames,
   RxIfVisibleViewContext,
 } from './model';
 import { RxEffects } from '../../../state/rx-effects';
+import { coerceAllFactory } from '@rx-angular/cdk/coercing';
+import { RxStrategyProvider } from '@rx-angular/cdk/render-strategies';
 
 @Directive({
   // tslint:disable-next-line:directive-selector
@@ -37,7 +36,7 @@ export class IfVisibleDirective<U> extends Hooks implements OnInit {
   private observer = intersectionObserver();
   private subscription: Subscription = new Subscription();
 
-  private strategyHandler = hotFlatten<string>(undefined, mergeAll());
+  private strategyHandler = coerceAllFactory<string>(undefined, mergeAll());
 
   private templateManager: RxTemplateManager<
     U,

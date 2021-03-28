@@ -1,0 +1,14 @@
+{
+  "extends": ["../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": [],
+      "parserOptions": {
+        "project": ["libs/test-helpers/tsconfig.*?.json"]
+      },
+      "rules": {}
+    }
+  ]
+}

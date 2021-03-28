@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RxStrategyProvider } from '@rx-angular/cdk';
+import { RxStrategyProvider } from '@rx-angular/cdk/render-strategies';
 import { RickAndMortyService } from './rick-and-morty.service';
 import { query } from 'rx-query';
 import { Observable, Subject } from 'rxjs';

@@ -4,7 +4,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { RxStrategyProvider } from '@rx-angular/cdk';
+import { RxStrategyProvider } from '@rx-angular/cdk/render-strategies';
 
 import { isObservable, Observable, of } from 'rxjs';
 import { Hooks, RxNotificationKind } from '../../../cdk';

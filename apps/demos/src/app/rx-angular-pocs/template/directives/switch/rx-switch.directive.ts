@@ -2,7 +2,7 @@ import { Directive, Input } from '@angular/core';
 
 import { Observable, ReplaySubject } from 'rxjs';
 import { distinctUntilChanged, mergeAll, switchAll } from 'rxjs/operators';
-import { hotFlatten } from '@rx-angular/cdk';
+import { coerceAllFactory } from '@rx-angular/cdk/coercing';
 
 @Directive({
   // tslint:disable-next-line:directive-selector
@@ -14,7 +14,7 @@ export class RxSwitch<U> {
     this.observables$.next(potentialObservable);
   }
 
-  private strategyHandler = hotFlatten<string>(undefined, mergeAll());
+  private strategyHandler = coerceAllFactory<string>(undefined, mergeAll());
 
   @Input('rxLetStrategy')
   set strategy(strategyName: string | Observable<string> | undefined) {

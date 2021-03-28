@@ -13,11 +13,14 @@ import {
   TrackByFunction,
   ViewContainerRef
 } from '@angular/core';
+import { coerceDistinctWith } from '@rx-angular/cdk/coercing';
 import {
   createListTemplateManager,
   RxListManager,
-  RxListViewComputedContext, RxListViewContext, RxDefaultListViewContext, coerceDistinctWith, RxStrategyProvider
-} from '@rx-angular/cdk';
+  RxListViewComputedContext, RxListViewContext, RxDefaultListViewContext
+} from '@rx-angular/cdk/template-management';
+import { RxStrategyProvider
+} from '@rx-angular/cdk/render-strategies';
 
 import { ReplaySubject, Subject, Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';

@@ -1,0 +1,9 @@
+{
+  "name": "@rx-angular/cdk-zone-configurations",
+  "peerDependencies": {
+    "@angular/core": ">10.1.1"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

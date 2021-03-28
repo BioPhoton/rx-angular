@@ -13,27 +13,27 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import {
-  createTemplateManager,
-  hotFlatten,
+  coerceAllFactory
+} from '@rx-angular/cdk/coercing';
+import {
   RxNotificationKind,
-  RxTemplateManager,
-  toRxCompleteNotification,
+  createTemplateNotifier, toRxCompleteNotification,
   toRxErrorNotification,
-  toRxSuspenseNotification,
-  RxStrategyProvider, templateNotifier,
-} from '@rx-angular/cdk';
+  toRxSuspenseNotification
+} from '@rx-angular/cdk/notifications';
+import { createTemplateManager, RxTemplateManager } from '@rx-angular/cdk/template-management';
+import {  RxStrategyProvider } from '@rx-angular/cdk/render-strategies';
+
 
 import {
   defer,
   NextObserver,
   Observable,
   ObservableInput,
-  ReplaySubject,
   Subject,
   Subscription,
 } from 'rxjs';
 import { map, mapTo, mergeAll } from 'rxjs/operators';
-import { Hooks } from '../../../cdk';
 import {
   RxLetTemplateNames,
   rxLetTemplateNames,
@@ -315,7 +315,7 @@ export class RxLet<U> implements OnInit, OnDestroy {
     this._renderObserver = callback;
   }
 
-  @Input('rxLetParent') renderParent = true;
+  @Input('rxLetParent') parent = true;
 
   @Input('rxLetPatchZone') patchZone = true;
 
@@ -329,9 +329,9 @@ export class RxLet<U> implements OnInit, OnDestroy {
   ) {}
 
   /** @internal */
-  private observablesHandler = templateNotifier<U>();
-  private strategyHandler = hotFlatten<string>(() => new Subject(), mergeAll());
-  private triggerHandler = hotFlatten<RxNotificationKind>(
+  private observablesHandler = createTemplateNotifier<U>();
+  private strategyHandler = coerceAllFactory<string>(() => new Subject(), mergeAll());
+  private triggerHandler = coerceAllFactory<RxNotificationKind>(
     () => new Subject(),
     mergeAll()
   );
@@ -374,7 +374,7 @@ export class RxLet<U> implements OnInit, OnDestroy {
       renderSettings: {
         cdRef: this.cdRef,
         eRef: this.eRef,
-        parent: coerceBooleanProperty(this.renderParent),
+        parent: coerceBooleanProperty(this.parent),
         patchZone: this.patchZone ? this.ngZone : false,
         defaultStrategyName: this.strategyProvider.primaryStrategy,
         strategies: this.strategyProvider.strategies,

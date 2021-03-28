@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { getZoneUnPatchedApi } from '@rx-angular/cdk';
+import { getZoneUnPatchedApi } from '@rx-angular/cdk/zone-less';
 
 export const animationFrameTick = () =>
   new Observable<number>((subscriber) => {

@@ -2,7 +2,7 @@ import {
   ɵɵdirectiveInject as directiveInject,
   ChangeDetectorRef, Type
 } from '@angular/core';
-import { RxStrategyCredentials, RxStrategyProvider } from '@rx-angular/cdk';
+import { RxStrategyCredentials, RxStrategyProvider } from '@rx-angular/cdk/render-strategies';
 import { fromEvent, of } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

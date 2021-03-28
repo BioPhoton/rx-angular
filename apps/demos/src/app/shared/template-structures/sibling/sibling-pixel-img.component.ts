@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
-import { RxStrategyProvider } from '@rx-angular/cdk';
+import { RxStrategyProvider } from '@rx-angular/cdk/render-strategies';
 import { Observable } from 'rxjs';
 import { RxState, selectSlice } from '@rx-angular/state';
 import { map } from 'rxjs/operators';

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Output } from '@angular/core';
 import { RxState } from '@rx-angular/state';
-import { RxStrategyProvider } from '@rx-angular/cdk';
-import { delay, map } from 'rxjs/operators';
+import { RxStrategyProvider } from '@rx-angular/cdk/render-strategies';
+import { map } from 'rxjs/operators';
 
 const strategiesUiConfig = {
   local: { name: 'local', icon: 'call_split' },

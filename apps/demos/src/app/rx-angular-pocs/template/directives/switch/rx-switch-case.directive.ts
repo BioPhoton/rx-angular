@@ -9,7 +9,7 @@ import {
   TemplateRef,
   ViewContainerRef
 } from '@angular/core';
-import { RxRenderWork } from '@rx-angular/cdk';
+import { RxRenderWork } from '@rx-angular/cdk/render-strategies';
 import { Subscription, Unsubscribable } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 import { RxSwitch } from './rx-switch.directive';

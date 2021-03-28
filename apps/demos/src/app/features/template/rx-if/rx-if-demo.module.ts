@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './rx-if.routes';
 import { RxIfBasicComponent } from './rx-if-basic.component';
 import { VisualizerModule } from '../../../shared/debug-helper/visualizer';
-import { UnpatchEventsModule } from '../../../rx-angular-pocs/template/directives/unpatch';
+import { UnpatchEventsModule } from '@rx-angular/template';
 import { ValueModule } from '../../../shared/debug-helper/value-provider/value/value.module';
 import { StrategySelectModule } from '../../../shared/debug-helper/strategy-select';
 import { ValueProvidersModule } from '../../../shared/debug-helper/value-provider';

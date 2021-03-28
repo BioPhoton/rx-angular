@@ -1,7 +1,7 @@
 import { AfterViewInit, Directive, ElementRef, Input, NgZone, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { getZoneUnPatchedApi } from '@rx-angular/cdk';
+import { getZoneUnPatchedApi } from '@rx-angular/cdk/zone-less';
 
 // tslint:disable-next-line:directive-selector
 @Directive({ selector: '[runOutsideZone]' })

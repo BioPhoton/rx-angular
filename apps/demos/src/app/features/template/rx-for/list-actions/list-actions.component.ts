@@ -8,7 +8,7 @@ import {
   ViewChildren,
   ViewEncapsulation,
 } from '@angular/core';
-import { asyncScheduler } from '@rx-angular/cdk';
+import { asyncScheduler } from '@rx-angular/cdk/zone-less';
 import { BehaviorSubject, defer, merge, scheduled, Subject } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 import {

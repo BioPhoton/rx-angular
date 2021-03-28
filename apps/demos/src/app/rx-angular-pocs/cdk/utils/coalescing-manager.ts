@@ -1,18 +1,19 @@
 import { createPropertiesWeakMap } from './properties-weakmap';
+import { coalescingObj } from '@rx-angular/cdk/coalescing';
 
 interface CoalescingContextProps {
   numCoalescingSubscribers: number;
 }
 
 interface CoalescingManager {
-  decrement: (scope: object) => void,
-  increment: (scope: object) => void,
-  isCoalescing: (scope: object) => boolean,
+  decrement: (scope: Record<string | symbol | number, unknown>) => void,
+  increment: (scope: Record<string | symbol | number, unknown>) => void,
+  isCoalescing: (scope: Record<string | symbol | number, unknown>) => boolean,
 }
 
 export const coalescingManager = createCoalesceManager();
 
-const coalescingContextPropertiesMap = createPropertiesWeakMap<object,
+const coalescingContextPropertiesMap = createPropertiesWeakMap<coalescingObj,
   CoalescingContextProps>((ctx) => ({
   numCoalescingSubscribers: 0
 }));
@@ -34,7 +35,7 @@ function createCoalesceManager(): CoalescingManager {
   };
 
   // Decrements the number of subscriptions in a scope e.g. a class instance
-  function decrement(scope: object): void {
+  function decrement(scope: Record<string | symbol | number, unknown>): void {
     const numCoalescingSubscribers = coalescingContextPropertiesMap
       .getProps(scope).numCoalescingSubscribers - 1;
     coalescingContextPropertiesMap
@@ -42,7 +43,7 @@ function createCoalesceManager(): CoalescingManager {
   }
 
   // Increments the number of subscriptions in a scope e.g. a class instance
-  function increment(scope: object): void {
+  function increment(scope: Record<string | symbol | number, unknown>): void {
     const numCoalescingSubscribers =
       coalescingContextPropertiesMap
         .getProps(scope).numCoalescingSubscribers + 1;
@@ -51,7 +52,7 @@ function createCoalesceManager(): CoalescingManager {
   }
 
   // Checks if anybody else is already coalescing atm (number > 0)
-  function isCoalescing(scope: object): boolean {
+  function isCoalescing(scope: Record<string | symbol | number, unknown>): boolean {
     return (
       coalescingContextPropertiesMap
         .getProps(scope).numCoalescingSubscribers > 0

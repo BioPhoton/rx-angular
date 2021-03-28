@@ -1,9 +1,11 @@
 import { ChangeDetectorRef, Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
-import { createTemplateManager, RxNotificationKind, RxTemplateManager, RxStrategyCredentials } from '@rx-angular/cdk';
+import { RxNotificationKind } from '@rx-angular/cdk/notifications';
+import { createTemplateManager, RxTemplateManager } from '@rx-angular/cdk/template-management';
+import {  RxStrategyCredentials } from '@rx-angular/cdk/render-strategies';
 
 import { isObservable, Observable, of, ReplaySubject, Subscription, Unsubscribable } from 'rxjs';
 import { Hooks } from '../../../cdk/hooks/hooks';
-import { RxStrategyProvider } from '@rx-angular/cdk';
+import { RxStrategyProvider } from '@rx-angular/cdk/render-strategies';
 import { RxContextTemplateNames, rxContextTemplateNames, RxContextViewContext } from './model';
 import { distinctUntilChanged, filter, map, mapTo, startWith, switchMap, withLatestFrom } from 'rxjs/operators';
 import { RxState } from '@rx-angular/state';

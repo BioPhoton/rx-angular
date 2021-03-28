@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RxLetModule } from '../../../../rx-angular-pocs';
-import { UnpatchEventsModule } from '../../../../rx-angular-pocs';
+import { UnpatchEventsModule } from '@rx-angular/template';
 import { VisualizerModule } from '../../../../shared/debug-helper/visualizer';
 import { V4AComponent } from './v4-a.component';
 import { V4BComponent } from './v4-b.component';

@@ -1,3 +1,4 @@
+// tslint:disable
 import { toDictionary } from '@rx-angular/state';
 
 interface Creature {
@@ -73,24 +74,21 @@ describe('toDictionary', () => {
 
   describe('edge cases', () => {
     it('should work with empty initial array', () => {
-      // @ts-ignore
-      const dictionaryResult = toDictionary([] as any, 'fakeKey');
+      const dictionaryResult = toDictionary([] as any, 'fakeKey' as unknown as never);
 
       expect(dictionaryResult).toEqual({});
     });
 
     it('should not call console.warn when key not found and source is empty', () => {
       const spy = jest.spyOn(console, 'warn').mockImplementation();
-      // @ts-ignore
-      toDictionary([] as any, 'fakeKey');
+      toDictionary([] as any, 'fakeKey' as unknown as never);
 
       expect(spy).not.toBeCalled();
     });
 
     it('should call console.warn when key not found and source not empty', () => {
       const spy = jest.spyOn(console, 'warn').mockImplementation();
-      // @ts-ignore
-      toDictionary([{notFake: 1}] as any, 'fakeKey');
+      toDictionary([{notFake: 1}] as any, 'fakeKey' as unknown as never);
 
       expect(spy).toBeCalled();
     });
@@ -108,14 +106,14 @@ describe('toDictionary', () => {
     });
 
     it('should return empty object when first argument is not array', () => {
-      // @ts-ignore
-      expect(toDictionary('' as any, '')).toEqual({});
-      // @ts-ignore
-      expect(toDictionary({} as any, '')).toEqual({});
-      // @ts-ignore
-      expect(toDictionary(1 as any, '')).toEqual({});
-      // @ts-ignore
-      expect(toDictionary(false as any, '')).toEqual({});
+
+      expect(toDictionary('' as any, '' as unknown as never)).toEqual({});
+
+      expect(toDictionary({} as any, '' as unknown as never)).toEqual({});
+
+      expect(toDictionary(1 as any, '' as unknown as never)).toEqual({});
+
+      expect(toDictionary(false as any, '' as unknown as never)).toEqual({});
     });
 
     it('should return null or undefined when array is not provided', () => {

@@ -1,4 +1,4 @@
-import { RxBaseTemplateNames, rxBaseTemplateNames } from '@rx-angular/cdk';
+import { RxBaseTemplateNames, rxBaseTemplateNames } from '@rx-angular/cdk/template-management';
 
 export type rxIfVisibleTemplateNames = 'viewTpl' | rxBaseTemplateNames;
 

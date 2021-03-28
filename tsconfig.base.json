@@ -18,14 +18,23 @@
     "paths": {
       "@test-helpers": ["libs/test-helpers/src/index.ts"],
       "@rx-angular/state": ["libs/state/src/index.ts"],
-      "@rx-angular/template": [
-//        "node_modules/@rx-angular/template",
-        "libs/template/src/index.ts"
+      "@rx-angular/template": ["libs/template/src/index.ts"],
+      "@rx-angular/cdk": ["libs/cdk/src/index.ts"],
+      "@rx-angular/cdk/zone-configurations": [
+        "libs/cdk/zone-configurations/src/index.ts"
       ],
-      "@rx-angular/cdk": [
-//        "node_modules/@rx-angular/cdk",
-        "libs/cdk/src/index.ts"
-      ]
+      "@rx-angular/cdk/render-strategies": [
+        "libs/cdk/render-strategies/src/index.ts"
+      ],
+      "@rx-angular/cdk/template-management": [
+        "libs/cdk/template-management/src/index.ts"
+      ],
+      "@rx-angular/cdk/notifications": ["libs/cdk/notifications/src/index.ts"],
+      "@rx-angular/cdk/coalescing": ["libs/cdk/coalescing/src/index.ts"],
+      "@rx-angular/cdk/coercing": ["libs/cdk/coercing/src/index.ts"],
+      "@rx-angular/cdk/zone-less": ["libs/cdk/zone-less/src/index.ts"],
+      "@rx-angular/template/rx-let": ["libs/template/rx-let/src/index.ts"],
+      "@rx-angular/template/push": ["libs/template/push/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

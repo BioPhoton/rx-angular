@@ -14,8 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { CanvasViewModule } from '../../../../shared/canvas-view/canvas-view.module';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { UnpatchEventsModule } from '../../../../rx-angular-pocs/template/directives/unpatch';
-
+import { UnpatchEventsModule } from '@rx-angular/template';
 
 @NgModule({
   declarations: [PixelPriorityComponent],

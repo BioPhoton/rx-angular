@@ -1,4 +1,4 @@
-import { RxCustomStrategyCredentials, RxStrategyCredentials, strategyHandling } from '@rx-angular/cdk';
+import { RxCustomStrategyCredentials, RxStrategyCredentials, createStrategyHandler } from '@rx-angular/cdk/render-strategies';
 import { ConnectableObservable, EMPTY, isObservable, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import {
   catchError,
@@ -45,7 +45,7 @@ export function createRenderAware<U>(cfg: {
 }): RenderAware<U | undefined | null> {
 
   const strategyName$ = new ReplaySubject<Observable<string>>(1);
-  const strategyHandling$ = strategyHandling(
+  const strategyHandling$ = createStrategyHandler(
     cfg.defaultStrategyName,
     cfg.strategies
   );

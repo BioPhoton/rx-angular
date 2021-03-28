@@ -10,9 +10,8 @@ import { V2FComponent } from './v2-f.component';
 import { V2HComponent } from './v2-h.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
-import { RxLetModule } from '../../../../rx-angular-pocs/template/directives/let';
-import { UnpatchEventsModule } from '../../../../rx-angular-pocs/template/directives/unpatch';
-import { PushModule } from '../../../../rx-angular-pocs/template/pipes/push';
+import { LetModule } from '@rx-angular/template';
+import { UnpatchEventsModule, PushModule } from '@rx-angular/template';
 import { DirtyChecksModule } from '../../../../shared/debug-helper/dirty-checks';
 
 @NgModule({
@@ -29,10 +28,9 @@ import { DirtyChecksModule } from '../../../../shared/debug-helper/dirty-checks'
     CommonModule,
     VisualizerModule,
     SharedModule,
-    RxLetModule,
     MatButtonModule,
     UnpatchEventsModule,
-    RxLetModule,
+    LetModule,
     PushModule,
     DirtyChecksModule
   ],

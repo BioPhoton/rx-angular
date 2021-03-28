@@ -5,11 +5,11 @@ import {
   OnInit,
   Optional,
 } from '@angular/core';
-import { RxStrategyProvider } from '@rx-angular/cdk';
+import { RxStrategyProvider } from '@rx-angular/cdk/render-strategies';
 import { Observable, Subject } from 'rxjs';
-import { filter, map, mergeAll, tap, withLatestFrom } from 'rxjs/operators';
-import { getZoneUnPatchedApi } from '../../core';
-import { LetDirective } from '../../let/let.directive';
+import { filter, map, mergeAll, withLatestFrom } from 'rxjs/operators';
+import { LetDirective } from '@rx-angular/template/rx-let';
+import { getZoneUnPatchedApi } from '@rx-angular/cdk/zone-less';
 
 /**
  *

@@ -1,0 +1,7 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/libs/template/rx-let",
+  "lib": {
+    "entryFile": "src/index.ts"
+  }
+}

@@ -547,7 +547,10 @@ export class RxState<T extends object> implements OnDestroy, Subscribable<T> {
     obsOrObsWithSideEffect: Observable<S>,
     sideEffectFn?: (arg: S) => void
   ): void {
-    const sideEffect = obsOrObsWithSideEffect.pipe(catchError(e => EMPTY))
+    const sideEffect = obsOrObsWithSideEffect.pipe(catchError(e => {
+      console.error(e)
+      return EMPTY
+    }))
     if (typeof sideEffectFn === 'function') {
       this.effectObservable.nextEffectObservable(
         sideEffect.pipe(tap(sideEffectFn))

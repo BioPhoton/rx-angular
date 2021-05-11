@@ -10,7 +10,7 @@ import { TestScheduler } from 'rxjs/testing';
 // tslint:disable-next-line:nx-enforce-module-boundaries
 import { RxState, select } from '@rx-angular/state';
 import { map, pluck, switchMap, take, takeUntil } from 'rxjs/operators';
-import { from, interval, of, Subject } from 'rxjs';
+import { from, interval, of, Subject, throwError } from 'rxjs';
 
 function setupState<T extends object>(cfg: { initialState?: T }) {
   const { initialState } = { ...cfg };
@@ -589,6 +589,13 @@ describe('RxStateService', () => {
       const state = setupState({ initialState: initialPrimitiveState });
       state.hold(of(1, 2, 3), effect);
       expect(calls).toBe(3);
+    }));
+
+    it('should logging error', fakeAsync(() => {
+      jest.spyOn(console, 'error').mockImplementation();
+      const state = setupState({ initialState: initialPrimitiveState });
+      state.hold(throwError(new Error('something went wrong')));
+      expect(console.error).toHaveBeenCalledWith(new Error('something went wrong'));
     }));
   });
 });

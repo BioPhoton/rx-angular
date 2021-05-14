@@ -16,17 +16,17 @@ import {
 } from 'rxjs';
 import { catchError, map, pluck, tap } from 'rxjs/operators';
 import {
-  AccumulationFn,
-  createAccumulationObservable,
-  createSideEffectObservable,
-} from './cdk';
-import {
   isKeyOf,
   isOperateFnArrayGuard,
   isStringArrayGuard,
   pipeFromArray,
   safePluck,
 } from './core';
+import {
+  AccumulationFn,
+  createAccumulationObservable,
+  createSideEffectObservable,
+} from './cdk';
 import { stateful } from './rxjs/operators';
 
 type ProjectStateFn<T> = (oldState: T) => Partial<T>;

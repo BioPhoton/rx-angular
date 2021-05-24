@@ -13,6 +13,7 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "noUnusedLocals": true,
     "baseUrl": ".",
     "paths": {
       "@test-helpers": ["libs/test-helpers/src/index.ts"],

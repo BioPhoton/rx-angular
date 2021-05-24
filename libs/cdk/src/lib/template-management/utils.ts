@@ -2,7 +2,6 @@ import {
   ChangeDetectorRef,
   Component,
   EmbeddedViewRef,
-  NgZone,
   TemplateRef,
   Type,
   ViewContainerRef,

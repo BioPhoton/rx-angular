@@ -6,7 +6,6 @@ import { getZoneUnPatchedApi } from '../../get-zone-unpatched-api';
 // @ts-ignore
 const isFunction = (fn) => typeof fn === 'function';
 const isArray = Array.isArray;
-const toString: Function = (() => Object.prototype.toString)();
 
 export interface NodeStyleEventEmitter {
   addListener: (eventName: string | symbol, handler: NodeEventHandler) => this;

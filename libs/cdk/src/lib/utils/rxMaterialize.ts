@@ -1,11 +1,9 @@
 import { Notification, Observable, OperatorFunction } from 'rxjs';
 import {
-  RxCompleteNotification,
-  RxErrorNotification,
   RxNotification,
   RxNotificationKind,
 } from '../model';
-import { map, materialize, tap } from 'rxjs/operators';
+import { map, materialize } from 'rxjs/operators';
 import {
   toRxCompleteNotification,
   toRxErrorNotification,

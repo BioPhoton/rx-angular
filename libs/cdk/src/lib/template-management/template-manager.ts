@@ -1,5 +1,5 @@
 import { EmbeddedViewRef, TemplateRef } from '@angular/core';
-import { EMPTY, merge, Observable, of } from 'rxjs';
+import {  merge, Observable, of } from 'rxjs';
 import {
   catchError,
   ignoreElements,
@@ -143,7 +143,6 @@ export function createTemplateManager<
   const templates = templateHandling<N, C>(templateSettings.viewContainerRef);
   const viewContainerRef = templateSettings.viewContainerRef;
 
-  const triggerHandling = config.templateTrigger$ || EMPTY;
   const getContext = notificationKindToViewContext(
     templateSettings.customContext || ((v) => {})
   );

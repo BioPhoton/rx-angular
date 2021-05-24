@@ -105,7 +105,7 @@ export class RxDefaultListViewContext<
 
   constructor(private item: T, customProps?: { count: number; index: number }) {
     // tslint:disable-next-line:no-unused-expression
-    this.$implicit = item;
+    this.$implicit = this.item;
     if (customProps) {
       this.updateContext(customProps);
     }

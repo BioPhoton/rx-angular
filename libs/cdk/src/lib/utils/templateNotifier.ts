@@ -4,7 +4,6 @@ import {
   NEVER,
   Observable,
   ObservableInput,
-  of,
   ReplaySubject,
 } from 'rxjs';
 import {

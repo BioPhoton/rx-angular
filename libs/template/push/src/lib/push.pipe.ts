@@ -99,7 +99,7 @@ export class PushPipe<S extends string = string>
   constructor(
     private strategyProvider: RxStrategyProvider,
     private cdRef: ChangeDetectorRef,
-    private ngZone: NgZone
+    private ngZone: NgZone,
   ) {
     this.subscription = this.handleChangeDetection();
   }

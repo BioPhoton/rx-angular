@@ -1,6 +1,6 @@
 import { RxStrategyCredentials, RxCustomStrategyCredentials } from '../model';
 import { Observable, ReplaySubject } from 'rxjs';
-import { map, mergeAll, share, startWith, switchAll } from 'rxjs/operators';
+import { map, share, startWith, switchAll } from 'rxjs/operators';
 import { hotFlatten } from './hotFlatten';
 
 /**

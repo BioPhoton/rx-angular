@@ -6,40 +6,10 @@ import {
   OnInit,
   Optional,
 } from '@angular/core';
-import { RxStrategyProvider } from '@rx-angular/cdk';
 import { LetDirective } from '@rx-angular/template/let';
 import { Observable, Subject } from 'rxjs';
 import { filter, map, mergeAll, withLatestFrom } from 'rxjs/operators';
 
-function intersectionObserver(
-  options?: object
-): {
-  observe: (target: Element) => void;
-  unobserve: (target: Element) => void;
-  entries$: Observable<any>;
-} {
-  const subject = new Subject();
-  const observer = observerSupported()
-    ? new IntersectionObserver((entries) => {
-        entries.forEach((entry) => subject.next(entry));
-      }, options)
-    : null;
-
-  const entries$ = new Observable((subscriber) => {
-    subject.subscribe(subscriber);
-    return () => {
-      if (observer) {
-        observer.disconnect();
-      }
-    };
-  });
-
-  return {
-    entries$,
-    observe: observer.observe,
-    unobserve: observer.unobserve,
-  };
-}
 
 const observerSupported = () =>
   typeof window !== 'undefined'
@@ -92,7 +62,6 @@ export class ViewportPrioDirective implements OnInit, OnDestroy {
 
   constructor(
     private readonly el: ElementRef<HTMLElement>,
-    private strategyProvider: RxStrategyProvider,
     @Inject(LetDirective)
     @Optional()
     private letDirective: LetDirective<any> | null

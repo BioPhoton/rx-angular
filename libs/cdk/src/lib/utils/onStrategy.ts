@@ -4,9 +4,8 @@ import {
   RxStrategyCredentials,
   RxCoalescingOptions,
 } from '../model';
-import { Observable, Observer, of, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import {
-  RxRenderError,
   RxRenderErrorFactory,
 } from '../template-management/render-error';
 

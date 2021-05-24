@@ -6,6 +6,13 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
+        "prefer-rest-params": "warn",
+        "prefer-const": "warn",
+        "prefer-spread": "warn",
+        "no-empty": "warn",
+        "no-extra-boolean-cast": "warn",
+        "no-prototype-builtins": "warn",
+        "max-len":"off",
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
           {
@@ -27,7 +34,15 @@
       "parserOptions": {
         "project": "./tsconfig.*?.json"
       },
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/ban-ts-comment": "warn",
+        "@typescript-eslint/ban-types": "warn",
+        "@typescript-eslint/no-empty-interface": "warn",
+        "@typescript-eslint/no-inferrable-types": "warn",
+        "@typescript-eslint/no-non-null-assertion": "warn",
+        "@typescript-eslint/no-empty-function": "warn",
+        "@typescript-eslint/member-ordering": "warn"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

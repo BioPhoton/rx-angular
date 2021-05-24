@@ -1,5 +1,5 @@
 {
-  "extends": ["../../../.eslintrc.json"],
+  "extends": ["../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
@@ -9,14 +9,14 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "parserOptions": {
-        "project": ["libs/cdk/coalescing/tsconfig.*?.json"]
+        "project": ["apps/tour-of-heroes/tsconfig.*?.json"]
       },
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
           {
             "type": "attribute",
-            "prefix": "rxAngular",
+            "prefix": "rxa",
             "style": "camelCase"
           }
         ],

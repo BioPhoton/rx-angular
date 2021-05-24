@@ -121,16 +121,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/demos/tsconfig.app.json",
-              "apps/demos/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/demos/**/*"
-            ]
+            "lintFilePatterns": ["apps/demos/**/*.ts"]
           }
         },
         "test": {
@@ -164,15 +157,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/demos-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/demos-e2e/**/*"
-            ]
+            "lintFilePatterns": ["apps/demos-e2e/**/*.ts"]
           }
         }
       }
@@ -281,16 +268,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/docs/tsconfig.app.json",
-              "apps/docs/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/docs/**/*"
-            ]
+            "lintFilePatterns": ["apps/docs/**/*.ts"]
           }
         },
         "test": {
@@ -402,16 +382,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/tour-of-heroes/tsconfig.app.json",
-              "apps/tour-of-heroes/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/tour-of-heroes/**/*"
-            ]
+            "lintFilePatterns": ["apps/tour-of-heroes/**/*.ts"]
           }
         },
         "test": {
@@ -523,16 +496,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/tour-of-heroes-ngxs/tsconfig.app.json",
-              "apps/tour-of-heroes-ngxs/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/tour-of-heroes-ngxs/**/*"
-            ]
+            "lintFilePatterns": ["apps/tour-of-heroes-ngxs/**/*.ts"]
           }
         },
         "test": {
@@ -554,16 +520,9 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/test-helpers/tsconfig.lib.json",
-              "libs/test-helpers/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/test-helpers/**/*"
-            ]
+            "lintFilePatterns": ["libs/test-helpers/**/*.ts"]
           }
         },
         "test": {
@@ -600,16 +559,9 @@
           ]
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/state/tsconfig.lib.json",
-              "libs/state/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/state/**/*"
-            ]
+            "lintFilePatterns": ["libs/state/**/*.ts"]
           }
         },
         "test": {
@@ -745,16 +697,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/template/tsconfig.lib.json",
-              "libs/template/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/template/**/*"
-            ]
+            "lintFilePatterns": ["libs/template/**/*.ts"]
           }
         },
         "test": {
@@ -918,16 +863,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/vanilla-case-studies/tsconfig.app.json",
-              "apps/vanilla-case-studies/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/vanilla-case-studies/**/*"
-            ]
+            "lintFilePatterns": ["apps/vanilla-case-studies/**/*.ts"]
           }
         },
         "test": {
@@ -961,15 +899,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/vanilla-case-studies-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/vanilla-case-studies-e2e/**/*"
-            ]
+            "lintFilePatterns": ["apps/vanilla-case-studies-e2e/**/*.ts"]
           }
         }
       }
@@ -1008,16 +940,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/cdk/tsconfig.lib.json",
-              "libs/cdk/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/cdk/**/*"
-            ]
+            "lintFilePatterns": ["libs/cdk/**/*.ts"]
           }
         },
         "test": {
@@ -1238,16 +1163,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/cdk/zone-less/tsconfig.lib.json",
-              "libs/cdk/zone-less/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/cdk/zone-less/**/*"
-            ]
+            "lintFilePatterns": ["libs/cdk/zoneless/**/*.ts"]
           }
         },
         "test": {
@@ -1521,13 +1439,13 @@
   "schematics": {
     "@nrwl/angular:application": {
       "style": "scss",
-      "linter": "tslint",
+      "linter": "eslint",
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
       "style": "scss",
-      "linter": "tslint",
+      "linter": "eslint",
       "unitTestRunner": "jest"
     },
     "@nrwl/angular:component": {

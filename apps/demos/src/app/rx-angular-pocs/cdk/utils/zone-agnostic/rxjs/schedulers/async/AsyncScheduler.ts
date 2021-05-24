@@ -14,7 +14,7 @@ export class AsyncScheduler extends Scheduler {
    * @type {boolean}
    * @deprecated internal use only
    */
-  public active: boolean = false;
+  public active = false;
   /**
    * An internal ID used to track the latest asynchronous task such as those
    * coming from `setTimeout`, `setInterval`, `requestAnimationFrame`, and

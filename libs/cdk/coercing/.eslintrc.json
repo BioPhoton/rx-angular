@@ -24,7 +24,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "rx-angular",
+            "prefix": "rxa",
             "style": "kebab-case"
           }
         ],

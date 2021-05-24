@@ -1,5 +1,5 @@
 {
-  "extends": ["../../../.eslintrc.json"],
+  "extends": ["../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
@@ -9,19 +9,25 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "parserOptions": {
-        "project": ["libs/cdk/coalescing/tsconfig.*?.json"]
+        "project": ["apps/demos/tsconfig.*?.json"]
       },
       "rules": {
+        "@angular-eslint/contextual-lifecycle": "warn",
+        "@angular-eslint/no-host-metadata-property": "warn",
+        "@angular-eslint/no-empty-lifecycle-method": "warn",
+        "@angular-eslint/no-input-rename": "warn",
+        "@angular-eslint/component-class-suffix": "warn",
+        "@angular-eslint/directive-class-suffix": "warn",
         "@angular-eslint/directive-selector": [
-          "error",
+          "warn",
           {
             "type": "attribute",
-            "prefix": "rxAngular",
+            "prefix": "rxa",
             "style": "camelCase"
           }
         ],
         "@angular-eslint/component-selector": [
-          "error",
+          "warn",
           {
             "type": "element",
             "prefix": "rxa",

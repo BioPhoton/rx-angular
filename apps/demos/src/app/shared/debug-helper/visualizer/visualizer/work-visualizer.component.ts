@@ -92,7 +92,7 @@ export class WorkVisualizerComponent extends Hooks {
   valuesO$ = defer(() => this.afterViewInit$.pipe(
     switchMap(() => this.changeO$.pipe(
       distinctUntilChanged(),
-      switchMap(o$ => !!this.key ? o$.pipe(pluck(this.key)) : o$),
+      switchMap(o$ => this.key ? o$.pipe(pluck(this.key)) : o$),
       distinctUntilChanged(),
       tap(v => console.log('value', v))
       )

@@ -1,4 +1,3 @@
 import { RxViewContext } from '@rx-angular/cdk';
 
-export interface RxContextViewContext<T> extends RxViewContext<T> {
-}
+export type RxContextViewContext<T> = RxViewContext<T>

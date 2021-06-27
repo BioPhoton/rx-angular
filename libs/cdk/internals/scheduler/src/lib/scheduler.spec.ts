@@ -6,7 +6,7 @@ const originalPerformance = ɵglobal.performance,
   originalClearTimeout = ɵglobal.clearTimeout,
   originalRequestAnimationFrame = ɵglobal.requestAnimationFrame,
   originalCancelAnimationFrame = ɵglobal.cancelAnimationFrame,
-  OriginalMessageChannel = ɵglobal.MessageChannel;
+  originalMessageChannel = ɵglobal.MessageChannel;
 
 describe('SchedulerBrowser', () => {
   let runtime: ReturnType<typeof installMockBrowserRuntime>;
@@ -45,7 +45,7 @@ describe('SchedulerBrowser', () => {
     ɵglobal.clearTimeout = originalClearTimeout;
     ɵglobal.requestAnimationFrame = originalRequestAnimationFrame;
     ɵglobal.cancelAnimationFrame = originalCancelAnimationFrame;
-    ɵglobal.MessageChannel = OriginalMessageChannel;
+    ɵglobal.MessageChannel = originalMessageChannel;
   });
 
   const enum LogEvent {
@@ -94,6 +94,8 @@ describe('SchedulerBrowser', () => {
       this.port1 = port1;
       this.port2 = port2;
     };
+
+    ɵglobal.setImmediate = undefined;
 
     function ensureLogIsEmpty(): void | never {
       if (eventLog.length !== 0) {

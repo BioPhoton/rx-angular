@@ -5,8 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'rx-angular-root',
   template: `
-    <div id="let" *rxLet="color$ as color; strategy: 'native'">{{ color }}</div>
-    <div id="push">{{ color$ | push: 'native' }}</div>
+    <div id="let" *rxLet="color$ as color; strategy">{{ color }}</div>
+    <div id="push">{{ color$ | push }}</div>
     <div id="unpatch" [unpatch]="['click']" (click)="onClick()"></div>
   `,
 })

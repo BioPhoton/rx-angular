@@ -1,5 +1,5 @@
 describe('@rx-angular/template universal rendering', () => {
-  describe('PushPipe using native strategy', () => {
+  describe('PushPipe', () => {
     it('should display green text', () => {
       cy.request('http://localhost:4200').its('body').then(
         html => {
@@ -10,7 +10,7 @@ describe('@rx-angular/template universal rendering', () => {
     });
   });
 
-  describe('LetDirective using native strategy', () => {
+  describe('LetDirective', () => {
     it('should display green text using', () => {
       cy.request('http://localhost:4200').its('body').then(
         html => {

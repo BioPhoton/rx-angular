@@ -1,47 +1,55 @@
-<!-- - @rx-angular/template [BETA]
+- **@rx-angular/template [BETA]**
 
-  - Getting started
+  - 🏁 Getting started
 
-    - [Overview](/template/overview.md)
-    - [Setup](/template/basic-setup.md)
+    - [Overview](/)
+    - [Setup](/)
 
-  - Theory
+  - 📚 Theory
 
-    - [Rendering issues in Angular](/template/theory/rendering-issues.md)
-    - [Concepts](/template/theory/concepts.md)
+    - [Rendering issues in Angular](/)
+    - [Concepts](/)
 
-  - Features
+  - 🧰 Features
 
-    - [LetDirective](/template/features/let.md)
-    - [PushPipe](/template/features/push.md)
-    - [RenderStrategies](/template/features/render-strategies.md)
+    - [LetDirective](/)
+    - [PushPipe](/)
+    - [RenderStrategies](/)
 
-  - Experimental
+  - 🔬 Experimental
 
-    - [Unpatch directive](/template/experimental/unpatch.md) -->
+    - [🧪 Unpatch directive](/)
+    - [🧪 ViewportPriority directive](/)
+    - [🧪 Experimental strategies](/)
+
+  - 📋 Tutorials
+
+    - [Basic tutorial](/)
+    - [Templates with LetDirective](/)
+    - [Combination with RxState](/)
 
 - **@rx-angular/state**
 
-  - Getting started
+  - 🏁 Getting started
 
     - [Overview](/web/state/general/overview.md)
     - [Setup](/web/state/general/basic-setup.md)
 
-  - API
+  - 📚 API
 
     - [RxState](/web/state/api/rx-state.md)
     - [RxJS Operators](/web/state/api/rxjs-operators.md)
     - [Transformation helpers](/web/state/api/transformation-helpers.md)
     - [Interfaces](/web/state/api/interfaces.md)
 
-  - Tutorials
+  - 📋 Tutorials
 
     - [Basic tutorial](/web/state/tutorials/basic-tutorial.md)
     - [Incrementing a value](/web/state/tutorials/incrementing-value.md)
     - [Migrating to RxState](/web/state/tutorials/from-imperative-to-reactive.md)
     - [Passing observables directly](/web/state/tutorials/passing-observables.md)
 
-  - Recipes
+  - 💡 Recipes
 
     - [Determine state type](/web/state/howtos/determine-state.md)
     - [Manage ViewModel](/web/state/howtos/manage-viewmodel.md)
@@ -50,7 +58,7 @@
     - [Work with HostBindings](/web/state/howtos/hostbindings.md)
     - [Use RxState as Global State](/web/state/howtos/rx-state-as-global-state.md)
 
-  - Integrations
+  - 🧮 Integrations
 
     - [Reuse ngrx selectors to compose state](/web/state/integrations/compose-state-using-ngrx-selectors.md)
     - [Manage entities using `@ngrx/entity`](/web/state/integrations/manage-entities-ngrx.md)

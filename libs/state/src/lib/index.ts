@@ -3,6 +3,7 @@ export {
   createAccumulationObservable,
 } from './cdk';
 export { RxState } from './rx-state.service';
+export { RxEffects } from './effects';
 export {
   select,
   stateful,

@@ -125,16 +125,36 @@ export class SideEffectsStart
 
 This is the trigger for our side effect.
 
-## `hold` the side effect
+## Manage side effects
 
-From the `resetRefreshTick` method, we now move the logic that starts the tick and place it in the `hold` method as a callback parameter.
+To maintain side effects RxAngular provides a deprecated method `RxState#hold`. 
+As this method will get removed in the future we directly focus on the new method and use `RxEffects#register`.
 
-The `hold` method's job, as the name implies, is to *hold* something. Namely, it holds a subscription to a side effect and takes care of its initialization.
+`RxEffects` is used in the same way as `RxState` as "component only provider". This means we need to add it to the components `providers` array.
+
+
+```typescript
+@Component({
+  ...
+  providers: [
+    RxEffects
+  ] 
+})
+export class SideEffectsStart extends RxState<ComponentState> {
+ constructor(private rxEffects: RxEffects) {
+   
+ }
+}
+```
+
+From the `resetRefreshTick` method, we now move the logic that starts the tick and place it in the `register` method of `RxEffects` as a callback parameter.
+
+The `register` method's job, as the name implies, is to *registers/holds* something. Namely, it holds a subscription to a side effect and takes care of its initialization.
 Furthermore, it automatically handles the subscription management and unsubscribes if the component gets destroyed.
 
 ```typescript
 constructor(...) {
-  this.hold(this.refreshClicks$, () => this.listService.refetchList());
+  this.rxEffects.register(this.refreshClicks$, () => this.listService.refetchList());
 }
 ```
 
@@ -148,11 +168,11 @@ refreshListSideEffect$ = this.refreshClicks$.pipe(
 );
 ```
 
-and then hold it directly:
+and then register it directly:
 
 ```typescript
 constructor(...) {
-  this.hold(refreshListSideEffect$);
+  this.rxEffects.register(refreshListSideEffect$);
 }
 ```
 
@@ -186,19 +206,19 @@ refreshListSideEffect$ = merge(
 ).pipe(tap((_) => this.listService.refetchList()));
 ```
 
-As a last step, we could use another overload of the `hold` method to get better readability of the code.
+As a last step, we could use another overload of the `register` method to get better readability of the code.
 
-The second overload of the `hold` method takes a trigger `Observable` and a separate function that is executed whenever the trigger fires.
+The second overload of the `register` method takes a trigger `Observable` and a separate function that is executed whenever the trigger fires.
 It generally looks like this:
 
-`hold(o$: Observable<T>, sideEffect: (v: T) => void)`
+`register(o$: Observable<T>, sideEffect: (v: T) => void)`
 
 In our constructor, we can use it as following:
 
 ```typescript
 constructor(...) {
   // ...
-  this.hold(refreshListSideEffect$, () => this.listService.refetchList());
+  this.rxEffects.register(refreshListSideEffect$, () => this.listService.refetchList());
 }
 ```
 

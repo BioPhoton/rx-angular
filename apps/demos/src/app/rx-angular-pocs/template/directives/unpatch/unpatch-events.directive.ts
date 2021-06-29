@@ -32,7 +32,7 @@ export function unpatchEventListener(elem: HTMLElement, event: string): void {
 }
 
 const eventsToUnpatch: string[] = [
-  ...mouseEvents, ...inputEvents, ...focusEvents, ...formControlsEvents
+  ...allEvents
 ];
 
 /**

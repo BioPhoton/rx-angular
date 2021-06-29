@@ -8,11 +8,23 @@ import {
   PartialObserver,
   pipe,
   Subject,
-  Subscription
+  Subscription,
 } from 'rxjs';
-import { catchError, filter, mapTo, mergeAll, publish, takeUntil, tap } from 'rxjs/operators';
-import { DestroyProp, OnDestroy$, toHook, untilDestroyed } from '@rx-angular/cdk';
-
+import {
+  catchError,
+  filter,
+  mapTo,
+  mergeAll,
+  publish,
+  takeUntil,
+  tap,
+} from 'rxjs/operators';
+import {
+  DestroyProp,
+  OnDestroy$,
+  toHook,
+  untilDestroyed,
+} from '@rx-angular/cdk';
 
 /**
  * Reduces subscription boilerplate for performing observable-based side-effects in components.
@@ -61,8 +73,7 @@ export class RxEffects implements OnDestroy, OnDestroy$ {
   constructor(
     @Optional()
     private readonly errorHandler: ErrorHandler
-  ) {
-  }
+  ) {}
 
   private static nextId = 0;
   readonly _hooks$ = new Subject<DestroyProp>();
@@ -71,7 +82,8 @@ export class RxEffects implements OnDestroy, OnDestroy$ {
   private readonly effects$ = this.observables$.pipe(mergeAll(), publish());
   onDestroy$: Observable<boolean> = this._hooks$.pipe(toHook('destroy'));
   private readonly destroyers: Record<number, Subject<void>> = {};
-  private readonly subscription = (this.effects$ as ConnectableObservable<any>).connect();
+  private readonly subscription = (this
+    .effects$ as ConnectableObservable<any>).connect();
 
   /**
    * Performs a side-effect whenever a source observable emits, and handles its subscription.
@@ -183,7 +195,6 @@ export class RxEffects implements OnDestroy, OnDestroy$ {
     this.destroyers[effectId]?.next();
   }
 
-
   /**
    * Fires a sideEffect when the instances `OnDestroy` hook is fired.
    *
@@ -192,9 +203,7 @@ export class RxEffects implements OnDestroy, OnDestroy$ {
    *
    * @param sideEffect
    */
-  registerOnDestroy(
-    sideEffect: (value: boolean) => void
-  ): number | void {
+  registerOnDestroy(sideEffect: (value: boolean) => void): number | void {
     return this.register(this.onDestroy$, sideEffect);
   }
 
@@ -215,7 +224,7 @@ export class RxEffects implements OnDestroy, OnDestroy$ {
     return <V>(source: Observable<V>) =>
       source.pipe(
         untilDestroyed(this),
-        takeUntil(this.effects$.pipe(filter(eId => eId === effectId)))
+        takeUntil(this.effects$.pipe(filter((eId) => eId === effectId)))
       );
   }
 
@@ -243,5 +252,4 @@ export class RxEffects implements OnDestroy, OnDestroy$ {
     this._hooks$.next({ destroy: true });
     this.subscription.unsubscribe();
   }
-
 }

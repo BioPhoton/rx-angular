@@ -55,7 +55,6 @@ The next step is to set up `model$`, a component property that holds all data we
 By assigning the `model$` to the `$` property of the `RxState` class, we get the full state object as `Observable<ComponentState>`.
 
 ```typescript
-
 @Component({
   selector: 'rxa-setup-solution',
   template: `

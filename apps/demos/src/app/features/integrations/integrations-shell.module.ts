@@ -21,6 +21,13 @@ const SHOWCASES_ROUTES: Routes = [
         (m) => m.PokemonPaginationModule
       ),
   },
+  {
+    path: 'dnd',
+    loadChildren: () =>
+      import('./dnd/dnd.component').then(
+        (m) => m.DndComponentModule
+      )
+  },
 ];
 
 @NgModule({

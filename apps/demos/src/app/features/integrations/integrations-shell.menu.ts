@@ -10,4 +10,8 @@ export const INTEGRATIONS_MENU_ITEMS = [
     label: 'Pokemon API w/ Pagination',
     link: 'pokemon-pagination',
   },
+  {
+    label: 'dnd',
+    link: 'dnd',
+  },
 ];

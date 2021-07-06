@@ -8,12 +8,11 @@ import {
 } from '@angular/core';
 import { combineLatest, merge, Observable, of, OperatorFunction } from 'rxjs';
 import {
-  catchError,
+  catchError, distinctUntilChanged,
   ignoreElements,
   map,
   switchMap,
-  tap,
-  withLatestFrom,
+  tap
 } from 'rxjs/operators';
 import { RxStrategyCredentials } from '../model';
 import { onStrategy } from '../utils/onStrategy';
@@ -98,11 +97,10 @@ export function createListTemplateManager<
   };
 
   function render(): OperatorFunction<NgIterable<T>, any> {
-    let count = 0;
     return (o$: Observable<NgIterable<T>>): Observable<any> =>
-      o$.pipe(
+      combineLatest([o$, strategyHandling$.strategy$.pipe(distinctUntilChanged())]).pipe(
         // map iterable to latest diff
-        map((iterable) => {
+        map(([iterable, strategy]) => {
           if (partiallyFinished) {
             const currentIterable = [];
             for (let i = 0, ilen = viewContainerRef.length; i < ilen; i++) {
@@ -114,11 +112,11 @@ export function createListTemplateManager<
           return {
             changes: differ.diff(iterable),
             items: iterable != null && Array.isArray(iterable) ? iterable : [],
+            strategy
           };
         }),
-        withLatestFrom(strategyHandling$.strategy$),
         // Cancel old renders
-        switchMap(([{ changes, items }, strategy]) => {
+        switchMap(({ changes, items, strategy }) => {
           if (!changes) {
             return of([]);
           }
@@ -128,40 +126,44 @@ export function createListTemplateManager<
           const applyChanges$ = getObservablesFromChangesArray(
             changesArr,
             strategy,
-            count
+            items.length
           );
           partiallyFinished = true;
           // @TODO we need to know if we need to notifyParent on move aswell
           notifyParent = insertedOrRemoved && parent;
-          count = items.length;
-          return merge(
-            combineLatest(
-              // emit after all changes are rendered
-              applyChanges$.length > 0 ? applyChanges$ : [of(items)]
-            ).pipe(
-              tap(() => (partiallyFinished = false)),
-              // somehow this makes the strategySelect work
-              notifyAllParentsIfNeeded(
-                tNode,
+          return new Observable(subscriber => {
+            const s = merge(
+              combineLatest(
+                // emit after all changes are rendered
+                applyChanges$.length > 0 ? applyChanges$ : [of(items)]
+              ).pipe(
+                tap(() => (partiallyFinished = false)),
+                // somehow this makes the strategySelect work
+                notifyAllParentsIfNeeded(
+                  tNode,
+                  injectingViewCdRef,
+                  strategy,
+                  () => notifyParent
+                )
+              ),
+              // emit injectingParent if needed
+              notifyInjectingParentIfNeeded(
                 injectingViewCdRef,
                 strategy,
-                () => notifyParent
-              )
-            ),
-            // emit injectingParent if needed
-            notifyInjectingParentIfNeeded(
-              injectingViewCdRef,
-              strategy,
-              insertedOrRemoved
-            ).pipe(ignoreElements())
-          ).pipe(
-            map(() => items),
-            catchError((e) => {
-              partiallyFinished = false;
-              errorHandler.handleError(e);
-              return of(e);
-            })
-          );
+                insertedOrRemoved
+              ).pipe(ignoreElements())
+            ).pipe(
+              map(() => items),
+              catchError((e) => {
+                partiallyFinished = false;
+                errorHandler.handleError(e);
+                return of(items);
+              })
+            ).subscribe(subscriber);
+            return () => {
+              s.unsubscribe();
+            }
+          })
         })
       );
   }

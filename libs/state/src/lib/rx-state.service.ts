@@ -589,6 +589,7 @@ export class RxState<T extends object> implements OnDestroy, Subscribable<T> {
   ): void {
     const sideEffect = obsOrObsWithSideEffect.pipe(
       catchError((e) => {
+        // used injector for compatibility with https://github.com/rx-angular/rx-angular/blob/master/libs/state/docs/usage.md#inherit
         const errorHandler = inject(ErrorHandler, InjectFlags.Optional);
         errorHandler?.handleError(e);
         return EMPTY;

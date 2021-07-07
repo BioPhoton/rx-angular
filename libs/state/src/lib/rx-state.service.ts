@@ -1,8 +1,32 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { EMPTY, isObservable, Observable, OperatorFunction, Subscribable, Subscription, Unsubscribable } from 'rxjs';
+import {
+  ErrorHandler,
+  inject,
+  Injectable,
+  InjectFlags,
+  OnDestroy,
+} from '@angular/core';
+import {
+  EMPTY,
+  isObservable,
+  Observable,
+  OperatorFunction,
+  Subscribable,
+  Subscription,
+  Unsubscribable,
+} from 'rxjs';
 import { catchError, map, pluck, tap } from 'rxjs/operators';
-import { isKeyOf, isOperateFnArrayGuard, isStringArrayGuard, pipeFromArray, safePluck } from './core';
-import { AccumulationFn, createAccumulationObservable, createSideEffectObservable } from './cdk';
+import {
+  isKeyOf,
+  isOperateFnArrayGuard,
+  isStringArrayGuard,
+  pipeFromArray,
+  safePluck,
+} from './core';
+import {
+  AccumulationFn,
+  createAccumulationObservable,
+  createSideEffectObservable,
+} from './cdk';
 import { stateful } from './rxjs/operators';
 
 type ProjectStateFn<T> = (oldState: T) => Partial<T>;
@@ -120,30 +144,38 @@ export class RxState<T extends object> implements OnDestroy, Subscribable<T> {
     k3: K3
   ): T[K1][K2][K3];
   /** @internal **/
-  get<K1 extends keyof T,
+  get<
+    K1 extends keyof T,
     K2 extends keyof T[K1],
     K3 extends keyof T[K1][K2],
-    K4 extends keyof T[K1][K2][K3]>(k1: K1, k2: K2, k3: K3, k4: K4): T[K1][K2][K3][K4];
+    K4 extends keyof T[K1][K2][K3]
+  >(k1: K1, k2: K2, k3: K3, k4: K4): T[K1][K2][K3][K4];
   /** @internal **/
-  get<K1 extends keyof T,
-    K2 extends keyof T[K1],
-    K3 extends keyof T[K1][K2],
-    K4 extends keyof T[K1][K2][K3],
-    K5 extends keyof T[K1][K2][K3][K4]>(k1: K1, k2: K2, k3: K3, k4: K4, k5: K5): T[K1][K2][K3][K4][K5];
-  /** @internal **/
-  get<K1 extends keyof T,
+  get<
+    K1 extends keyof T,
     K2 extends keyof T[K1],
     K3 extends keyof T[K1][K2],
     K4 extends keyof T[K1][K2][K3],
-    K5 extends keyof T[K1][K2][K3][K4],
-    K6 extends keyof T[K1][K2][K3][K4][K5]>(k1: K1, k2: K2, k3: K3, k4: K4, k5: K5, k6: K6): T[K1][K2][K3][K4][K5][K6];
+    K5 extends keyof T[K1][K2][K3][K4]
+  >(k1: K1, k2: K2, k3: K3, k4: K4, k5: K5): T[K1][K2][K3][K4][K5];
   /** @internal **/
-  get<K1 extends keyof T,
+  get<
+    K1 extends keyof T,
     K2 extends keyof T[K1],
     K3 extends keyof T[K1][K2],
     K4 extends keyof T[K1][K2][K3],
     K5 extends keyof T[K1][K2][K3][K4],
-    K6 extends keyof T[K1][K2][K3][K4][K5]>(
+    K6 extends keyof T[K1][K2][K3][K4][K5]
+  >(k1: K1, k2: K2, k3: K3, k4: K4, k5: K5, k6: K6): T[K1][K2][K3][K4][K5][K6];
+  /** @internal **/
+  get<
+    K1 extends keyof T,
+    K2 extends keyof T[K1],
+    K3 extends keyof T[K1][K2],
+    K4 extends keyof T[K1][K2][K3],
+    K5 extends keyof T[K1][K2][K3][K4],
+    K6 extends keyof T[K1][K2][K3][K4][K5]
+  >(
     ...keys:
       | [K1]
       | [K1, K2]
@@ -163,9 +195,9 @@ export class RxState<T extends object> implements OnDestroy, Subscribable<T> {
     if (!!keys && keys.length) {
       return safePluck(this.accumulator.state, keys);
     } else {
-      return hasStateAnyKeys ?
-             this.accumulator.state :
-              undefined as unknown as T;
+      return hasStateAnyKeys
+        ? this.accumulator.state
+        : ((undefined as unknown) as T);
     }
   }
 
@@ -472,33 +504,41 @@ export class RxState<T extends object> implements OnDestroy, Subscribable<T> {
   /**
    * @internal
    */
-  select<K1 extends keyof T,
+  select<
+    K1 extends keyof T,
     K2 extends keyof T[K1],
-    K3 extends keyof T[K1][K2]>(k1: K1, k2: K2, k3: K3): Observable<T[K1][K2][K3]>;
+    K3 extends keyof T[K1][K2]
+  >(k1: K1, k2: K2, k3: K3): Observable<T[K1][K2][K3]>;
   /**
    * @internal
    */
-  select<K1 extends keyof T,
+  select<
+    K1 extends keyof T,
     K2 extends keyof T[K1],
     K3 extends keyof T[K1][K2],
-    K4 extends keyof T[K1][K2][K3]>(k1: K1, k2: K2, k3: K3, k4: K4): Observable<T[K1][K2][K3][K4]>;
+    K4 extends keyof T[K1][K2][K3]
+  >(k1: K1, k2: K2, k3: K3, k4: K4): Observable<T[K1][K2][K3][K4]>;
   /**
    * @internal
    */
-  select<K1 extends keyof T,
+  select<
+    K1 extends keyof T,
     K2 extends keyof T[K1],
     K3 extends keyof T[K1][K2],
     K4 extends keyof T[K1][K2][K3],
-    K5 extends keyof T[K1][K2][K3][K4]>(k1: K1, k2: K2, k3: K3, k4: K4, k5: K5): Observable<T[K1][K2][K3][K4][K5]>;
+    K5 extends keyof T[K1][K2][K3][K4]
+  >(k1: K1, k2: K2, k3: K3, k4: K4, k5: K5): Observable<T[K1][K2][K3][K4][K5]>;
   /**
    * @internal
    */
-  select<K1 extends keyof T,
+  select<
+    K1 extends keyof T,
     K2 extends keyof T[K1],
     K3 extends keyof T[K1][K2],
     K4 extends keyof T[K1][K2][K3],
     K5 extends keyof T[K1][K2][K3][K4],
-    K6 extends keyof T[K1][K2][K3][K4][K5]>(
+    K6 extends keyof T[K1][K2][K3][K4][K5]
+  >(
     k1: K1,
     k2: K2,
     k3: K3,
@@ -547,7 +587,14 @@ export class RxState<T extends object> implements OnDestroy, Subscribable<T> {
     obsOrObsWithSideEffect: Observable<S>,
     sideEffectFn?: (arg: S) => void
   ): void {
-    const sideEffect = obsOrObsWithSideEffect.pipe(catchError(e => EMPTY))
+    const sideEffect = obsOrObsWithSideEffect.pipe(
+      catchError((e) => {
+        // used injector for compatibility with https://github.com/rx-angular/rx-angular/blob/master/libs/state/docs/usage.md#inherit
+        const errorHandler = inject(ErrorHandler, InjectFlags.Optional);
+        errorHandler?.handleError(e);
+        return EMPTY;
+      })
+    );
     if (typeof sideEffectFn === 'function') {
       this.effectObservable.nextEffectObservable(
         sideEffect.pipe(tap(sideEffectFn))

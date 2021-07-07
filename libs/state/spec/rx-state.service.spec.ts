@@ -1,3 +1,4 @@
+import { ErrorHandler, Injector } from '@angular/core';
 // tslint:disable-next-line:nx-enforce-module-boundaries
 import { jestMatcher } from '@test-helpers';
 import { fakeAsync, TestBed } from '@angular/core/testing';
@@ -10,7 +11,10 @@ import { TestScheduler } from 'rxjs/testing';
 // tslint:disable-next-line:nx-enforce-module-boundaries
 import { RxState, select } from '@rx-angular/state';
 import { map, pluck, switchMap, take, takeUntil } from 'rxjs/operators';
-import { from, interval, of, Subject } from 'rxjs';
+import { from, interval, of, Subject, throwError } from 'rxjs';
+import {
+  ɵsetCurrentInjector as setCurrentInjector
+} from '@angular/core';
 
 function setupState<T extends object>(cfg: { initialState?: T }) {
   const { initialState } = { ...cfg };
@@ -589,6 +593,19 @@ describe('RxStateService', () => {
       const state = setupState({ initialState: initialPrimitiveState });
       state.hold(of(1, 2, 3), effect);
       expect(calls).toBe(3);
+    }));
+
+    it('should invoke provided ErrorHandler', fakeAsync(() => {
+      const state = setupState({ initialState: initialPrimitiveState });
+      const customErrorHandler: ErrorHandler = {
+        handleError: jest.fn()
+      };
+      TestBed.overrideProvider(ErrorHandler, { useValue: customErrorHandler });
+      setCurrentInjector(TestBed.inject(Injector));
+      state.hold(throwError(new Error('something went wrong')));
+      expect(customErrorHandler.handleError).toHaveBeenCalledWith(
+        new Error('something went wrong')
+      );
     }));
   });
 });

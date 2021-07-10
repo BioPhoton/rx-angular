@@ -1,3 +1,5 @@
+import { from, of } from 'rxjs';
+
 import {
   isDefined,
   isIterableGuard,
@@ -5,19 +7,17 @@ import {
   isObjectGuard,
   isOperateFnArrayGuard,
   isPromiseGuard,
-  isStringArrayGuard
-} from '../../../src/lib/core/utils';
-import { from, of } from 'rxjs';
-
+  isStringArrayGuard,
+} from './guards';
 
 describe('isPromiseGuard', () => {
   it('should return true for a Promise', () => {
-    expect(isPromiseGuard(new Promise(() => {
-    }))).toBeTruthy();
-    expect(isPromiseGuard({
-      then: () => {
-      }
-    })).toBeTruthy();
+    expect(isPromiseGuard(new Promise(() => {}))).toBeTruthy();
+    expect(
+      isPromiseGuard({
+        then: () => {},
+      })
+    ).toBeTruthy();
   });
 
   it('should return false if input is not a promise', () => {
@@ -28,10 +28,7 @@ describe('isPromiseGuard', () => {
 
 describe('isOperateFnArrayGuard', () => {
   it('should return true for a array of functions', () => {
-    expect(isOperateFnArrayGuard([() => {
-    }, () => {
-    }, () => {
-    }])).toBeTruthy();
+    expect(isOperateFnArrayGuard([() => {}, () => {}, () => {}])).toBeTruthy();
   });
 
   it('should return false for other values', () => {
@@ -39,7 +36,7 @@ describe('isOperateFnArrayGuard', () => {
     expect(isOperateFnArrayGuard([1, 2, 3])).toBeFalsy();
     expect(isOperateFnArrayGuard(['1', '2', '3'])).toBeFalsy();
     expect(isOperateFnArrayGuard('1' as any)).toBeFalsy();
-    expect(isOperateFnArrayGuard(true as unknown as any[])).toBeFalsy();
+    expect(isOperateFnArrayGuard((true as unknown) as any[])).toBeFalsy();
     expect(isOperateFnArrayGuard([true, false, true])).toBeFalsy();
     expect(isOperateFnArrayGuard({} as any)).toBeFalsy();
     expect(isOperateFnArrayGuard([{}, {}, {}])).toBeFalsy();
@@ -51,7 +48,6 @@ describe('isOperateFnArrayGuard', () => {
 });
 
 describe('isStringArrayGuard', () => {
-
   it('should return true if input is an array of strings', () => {
     expect(isStringArrayGuard(['1', '2', '3'])).toBeTruthy();
   });
@@ -59,10 +55,7 @@ describe('isStringArrayGuard', () => {
   it('should return false for other input types', () => {
     expect(isStringArrayGuard(1 as any)).toBeFalsy();
     expect(isStringArrayGuard([1, 2, 3])).toBeFalsy();
-    expect(isStringArrayGuard([() => {
-    }, () => {
-    }, () => {
-    }])).toBeFalsy();
+    expect(isStringArrayGuard([() => {}, () => {}, () => {}])).toBeFalsy();
     expect(isStringArrayGuard('1' as any)).toBeFalsy();
     expect(isStringArrayGuard(true as any)).toBeFalsy();
     expect(isStringArrayGuard([true, false, true])).toBeFalsy();
@@ -78,10 +71,11 @@ describe('isStringArrayGuard', () => {
 describe('isIterableGuard', () => {
   it('should return true if input is a Promise', () => {
     expect(isIterableGuard([])).toBeTruthy();
-    expect(isIterableGuard({
-      [Symbol.iterator]: () => {
-      }
-    })).toBeTruthy();
+    expect(
+      isIterableGuard({
+        [Symbol.iterator]: () => {},
+      })
+    ).toBeTruthy();
   });
 
   it('should return false for input types other than Promise', () => {
@@ -96,7 +90,9 @@ describe('isKeyOf', () => {
   it('should return true if key exists', () => {
     expect(isKeyOf<{ num: number }>('num')).toBeTruthy();
     expect(isKeyOf<{ 1: number }>(1)).toBeTruthy();
-    expect(isKeyOf<{ [Symbol.iterator]: number }>(Symbol.iterator)).toBeTruthy();
+    expect(
+      isKeyOf<{ [Symbol.iterator]: number }>(Symbol.iterator)
+    ).toBeTruthy();
   });
 
   it('should return false for no Promise', () => {

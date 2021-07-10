@@ -1,4 +1,4 @@
-import { isObjectGuard } from '../../core';
+import { isObjectGuard } from '@rx-angular/state/internals';
 
 /**
  * @description

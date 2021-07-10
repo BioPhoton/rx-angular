@@ -1,0 +1,11 @@
+{
+  "name": "@rx-angular/state-internals",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^12.0.2",
+    "@angular/core": "^12.0.2"
+  },
+  "dependencies": {
+    "tslib": "^2.1.0"
+  }
+}

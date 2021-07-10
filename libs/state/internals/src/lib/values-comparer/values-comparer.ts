@@ -1,5 +1,5 @@
-import { ComparableData } from '../interfaces/comparable-data-type';
-import { isKeyOf } from '../../core';
+import { isKeyOf } from '../guards/guards';
+import { ComparableData } from '../interfaces';
 
 export function valuesComparer<T>(
   original: T,
@@ -14,10 +14,11 @@ export function valuesComparer<T>(
 
   if (Array.isArray(compare)) {
     const sanitizedKeys = compare.filter((k) => isKeyOf<T>(k));
-    return !!sanitizedKeys.length
+    return sanitizedKeys.length > 0
       ? sanitizedKeys.every((k) => original[k] === incoming[k])
       : defaultCompare(original, incoming);
   }
 
-  return (compare || defaultCompare)(original, incoming);
+  compare = typeof compare === 'function' ? compare : defaultCompare;
+  return compare(original, incoming);
 }

@@ -1,5 +1,4 @@
-import { ComparableData } from '../interfaces/comparable-data-type';
-import { valuesComparer } from '../_internals/valuesComparer.util';
+import { valuesComparer, ComparableData } from '@rx-angular/state/internals';
 
 /**
  * @description

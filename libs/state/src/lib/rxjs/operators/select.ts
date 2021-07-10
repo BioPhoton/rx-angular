@@ -1,6 +1,7 @@
 import { MonoTypeOperatorFunction, Observable, OperatorFunction } from 'rxjs';
 import { pluck } from 'rxjs/operators';
-import { isOperateFnArrayGuard, isStringArrayGuard, pipeFromArray } from '../../core/utils';
+import { isOperateFnArrayGuard, isStringArrayGuard, pipeFromArray } from '@rx-angular/state/internals';
+
 import { stateful } from './stateful';
 
 /**

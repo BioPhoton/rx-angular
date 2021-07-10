@@ -1,6 +1,8 @@
-import { KeyCompareMap } from '../interfaces';
 import { Observable, OperatorFunction } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+
+import { KeyCompareMap } from '@rx-angular/state/internals';
+
 import { distinctUntilSomeChanged } from './distinctUntilSomeChanged';
 
 /**

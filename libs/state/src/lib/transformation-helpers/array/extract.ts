@@ -1,4 +1,4 @@
-import { isDefined, isKeyOf } from '../../core';
+import { isDefined, isKeyOf } from '@rx-angular/state/internals';
 
 /**
  * @description

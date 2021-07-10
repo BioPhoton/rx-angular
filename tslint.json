@@ -57,6 +57,10 @@
         "allow": [],
         "depConstraints": [
           {
+            "sourceTag": "type:internal-lib",
+            "onlyDependOnLibsWithTags": []
+          },
+          {
             "sourceTag": "type:utils",
             "onlyDependOnLibsWithTags": []
           },
@@ -66,7 +70,7 @@
           },
           {
             "sourceTag": "type:lib",
-            "onlyDependOnLibsWithTags": ["type:utils", "type:cdk"]
+            "onlyDependOnLibsWithTags": ["type:internal-lib", "type:utils", "type:cdk"]
           }
         ]
       }

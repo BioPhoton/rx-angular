@@ -1,6 +1,28 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false,
+    "packageManager": "yarn"
+  },
+  "defaultProject": "demos",
+  "schematics": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "tslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "buildable": true,
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
   "projects": {
     "demos": {
       "projectType": "application",
@@ -22,13 +44,8 @@
             "main": "apps/demos/src/main.ts",
             "polyfills": "apps/demos/src/polyfills.ts",
             "tsConfig": "apps/demos/tsconfig.app.json",
-            "assets": [
-              "apps/demos/src/favicon.ico",
-              "apps/demos/src/assets"
-            ],
-            "styles": [
-              "apps/demos/src/styles.scss"
-            ],
+            "assets": ["apps/demos/src/favicon.ico", "apps/demos/src/assets"],
+            "styles": ["apps/demos/src/styles.scss"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -93,9 +110,7 @@
               "polyfills": ""
             }
           },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -127,10 +142,7 @@
               "apps/demos/tsconfig.app.json",
               "apps/demos/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/demos/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/demos/**/*"]
           }
         },
         "test": {
@@ -139,9 +151,7 @@
             "jestConfig": "apps/demos/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/apps/demos"
-          ]
+          "outputs": ["coverage/apps/demos"]
         }
       }
     },
@@ -166,13 +176,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/demos-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/demos-e2e/**/*"
-            ]
+            "tsConfig": ["apps/demos-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/demos-e2e/**/*"]
           }
         }
       }
@@ -215,13 +220,8 @@
             "main": "apps/docs/src/main.ts",
             "polyfills": "apps/docs/src/polyfills.ts",
             "tsConfig": "apps/docs/tsconfig.app.json",
-            "assets": [
-              "apps/docs/src/favicon.ico",
-              "apps/docs/src/assets"
-            ],
-            "styles": [
-              "apps/docs/src/styles.scss"
-            ],
+            "assets": ["apps/docs/src/favicon.ico", "apps/docs/src/assets"],
+            "styles": ["apps/docs/src/styles.scss"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -259,9 +259,7 @@
               ]
             }
           },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -287,10 +285,7 @@
               "apps/docs/tsconfig.app.json",
               "apps/docs/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/docs/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/docs/**/*"]
           }
         },
         "test": {
@@ -299,9 +294,7 @@
             "jestConfig": "apps/docs/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/apps/docs"
-          ]
+          "outputs": ["coverage/apps/docs"]
         }
       }
     },
@@ -328,9 +321,7 @@
               "apps/tour-of-heroes-ngxs/src/favicon.ico",
               "apps/tour-of-heroes-ngxs/src/assets"
             ],
-            "styles": [
-              "apps/tour-of-heroes-ngxs/src/styles.scss"
-            ],
+            "styles": ["apps/tour-of-heroes-ngxs/src/styles.scss"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -377,9 +368,7 @@
               ]
             }
           },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -408,10 +397,7 @@
               "apps/tour-of-heroes-ngxs/tsconfig.app.json",
               "apps/tour-of-heroes-ngxs/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/tour-of-heroes-ngxs/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/tour-of-heroes-ngxs/**/*"]
           }
         },
         "test": {
@@ -420,9 +406,7 @@
             "jestConfig": "apps/tour-of-heroes-ngxs/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/apps/tour-of-heroes-ngxs"
-          ]
+          "outputs": ["coverage/apps/tour-of-heroes-ngxs"]
         }
       }
     },
@@ -439,10 +423,7 @@
               "libs/test-helpers/tsconfig.lib.json",
               "libs/test-helpers/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/test-helpers/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/test-helpers/**/*"]
           }
         },
         "test": {
@@ -451,9 +432,7 @@
             "jestConfig": "libs/test-helpers/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/test-helpers"
-          ]
+          "outputs": ["coverage/libs/test-helpers"]
         }
       }
     },
@@ -474,9 +453,7 @@
               "tsConfig": "libs/state/tsconfig.lib.prod.json"
             }
           },
-          "outputs": [
-            "dist/libs/state"
-          ]
+          "outputs": ["dist/libs/state"]
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -485,10 +462,7 @@
               "libs/state/tsconfig.lib.json",
               "libs/state/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/state/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/state/**/*"]
           }
         },
         "test": {
@@ -497,9 +471,7 @@
             "jestConfig": "libs/state/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/state"
-          ]
+          "outputs": ["coverage/libs/state"]
         },
         "build-docs": {
           "builder": "@nrwl/workspace:run-commands",
@@ -528,9 +500,7 @@
             "passWithNoTests": true,
             "codeCoverage": true
           },
-          "outputs": [
-            "coverage/libs/state"
-          ]
+          "outputs": ["coverage/libs/state"]
         },
         "perfBuild": {
           "builder": "@nrwl/node:build",
@@ -539,9 +509,7 @@
             "outputPath": "dist/libs/state-perf/dist",
             "tsConfig": "libs/state/tsconfig.perf.json"
           },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+          "outputs": ["{options.outputPath}"]
         },
         "perf": {
           "builder": "@nrwl/node:execute",
@@ -573,6 +541,46 @@
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss"
+        }
+      }
+    },
+    "state-internals": {
+      "projectType": "library",
+      "root": "libs/state/internals",
+      "sourceRoot": "libs/state/internals/src",
+      "prefix": "rx-angular",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "project": "libs/state/internals/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/state/internals/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/state/internals/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/state/internals"],
+          "options": {
+            "jestConfig": "libs/state/internals/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/state/internals/src/**/*.ts",
+              "libs/state/internals/src/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -633,10 +641,7 @@
               "libs/template/tsconfig.lib.json",
               "libs/template/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/template/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/template/**/*"]
           }
         },
         "test": {
@@ -645,9 +650,7 @@
             "jestConfig": "libs/template/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/template"
-          ]
+          "outputs": ["coverage/libs/template"]
         },
         "build-docs": {
           "builder": "@nrwl/workspace:run-commands",
@@ -677,9 +680,7 @@
             "passWithNoTests": true,
             "codeCoverage": true
           },
-          "outputs": [
-            "coverage/libs/template"
-          ]
+          "outputs": ["coverage/libs/template"]
         },
         "changelog": {
           "builder": "@nrwl/workspace:run-commands",
@@ -738,9 +739,7 @@
               "apps/vanilla-case-studies/src/assets",
               "apps/vanilla-case-studies/src/case-studies"
             ],
-            "styles": [
-              "apps/vanilla-case-studies/src/styles.css"
-            ],
+            "styles": ["apps/vanilla-case-studies/src/styles.css"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -778,9 +777,7 @@
               ]
             }
           },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -806,10 +803,7 @@
               "apps/vanilla-case-studies/tsconfig.app.json",
               "apps/vanilla-case-studies/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/vanilla-case-studies/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/vanilla-case-studies/**/*"]
           }
         },
         "test": {
@@ -818,9 +812,7 @@
             "jestConfig": "apps/vanilla-case-studies/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/apps/vanilla-case-studies"
-          ]
+          "outputs": ["coverage/apps/vanilla-case-studies"]
         }
       }
     },
@@ -845,9 +837,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/vanilla-case-studies-e2e/tsconfig.e2e.json"
-            ],
+            "tsConfig": ["apps/vanilla-case-studies-e2e/tsconfig.e2e.json"],
             "exclude": [
               "**/node_modules/**",
               "!apps/vanilla-case-studies-e2e/**/*"
@@ -896,10 +886,7 @@
               "libs/cdk/tsconfig.lib.json",
               "libs/cdk/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/cdk/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/cdk/**/*"]
           }
         },
         "test": {
@@ -908,9 +895,7 @@
             "jestConfig": "libs/cdk/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/cdk"
-          ]
+          "outputs": ["coverage/libs/cdk"]
         },
         "test-coverage": {
           "builder": "@nrwl/jest:jest",
@@ -919,9 +904,7 @@
             "passWithNoTests": true,
             "codeCoverage": true
           },
-          "outputs": [
-            "coverage/libs/cdk"
-          ]
+          "outputs": ["coverage/libs/cdk"]
         },
         "changelog": {
           "builder": "@nrwl/workspace:run-commands",
@@ -964,13 +947,8 @@
             "main": "apps/ssr/src/main.ts",
             "polyfills": "apps/ssr/src/polyfills.ts",
             "tsConfig": "apps/ssr/tsconfig.app.json",
-            "assets": [
-              "apps/ssr/src/favicon.ico",
-              "apps/ssr/src/assets"
-            ],
-            "styles": [
-              "apps/ssr/src/styles.css"
-            ],
+            "assets": ["apps/ssr/src/favicon.ico", "apps/ssr/src/assets"],
+            "styles": ["apps/ssr/src/styles.css"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -1037,9 +1015,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/ssr"
-          ],
+          "outputs": ["coverage/apps/ssr"],
           "options": {
             "jestConfig": "apps/ssr/jest.config.js",
             "passWithNoTests": true
@@ -1099,9 +1075,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/ssr-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/ssr-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -1126,17 +1100,12 @@
               "libs/cdk/zone-less/tsconfig.lib.json",
               "libs/cdk/zone-less/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/cdk/zone-less/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/cdk/zone-less/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/cdk/zone-less"
-          ],
+          "outputs": ["coverage/libs/cdk/zone-less"],
           "options": {
             "jestConfig": "libs/cdk/zone-less/jest.config.js",
             "passWithNoTests": true
@@ -1168,9 +1137,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/cdk/zone-configurations"
-          ],
+          "outputs": ["coverage/libs/cdk/zone-configurations"],
           "options": {
             "jestConfig": "libs/cdk/zone-configurations/jest.config.js",
             "passWithNoTests": true
@@ -1202,9 +1169,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/cdk/internals/scheduler"
-          ],
+          "outputs": ["coverage/libs/cdk/internals/scheduler"],
           "options": {
             "jestConfig": "libs/cdk/internals/scheduler/jest.config.js",
             "passWithNoTests": true
@@ -1241,9 +1206,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/cdk/coalescing"
-          ],
+          "outputs": ["coverage/libs/cdk/coalescing"],
           "options": {
             "jestConfig": "libs/cdk/coalescing/jest.config.js",
             "passWithNoTests": true
@@ -1275,9 +1238,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/template/let"
-          ],
+          "outputs": ["coverage/libs/template/let"],
           "options": {
             "jestConfig": "libs/template/let/jest.config.js",
             "passWithNoTests": true
@@ -1384,9 +1345,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/cdk/coercing"
-          ],
+          "outputs": ["coverage/libs/cdk/coercing"],
           "options": {
             "jestConfig": "libs/cdk/coercing/jest.config.js",
             "passWithNoTests": true
@@ -1433,27 +1392,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular",
-    "analytics": false,
-    "packageManager": "yarn"
-  },
-  "schematics": {
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "tslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "scss",
-      "linter": "tslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
-    }
-  },
-  "defaultProject": "demos"
+  }
 }

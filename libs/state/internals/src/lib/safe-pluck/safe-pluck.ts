@@ -1,4 +1,4 @@
-import { isDefined, isKeyOf, isObjectGuard } from './guards';
+import { isDefined, isKeyOf, isObjectGuard } from '../guards/guards';
 
 export function safePluck<T extends object, K1 extends keyof T>(
   stateObject: T,

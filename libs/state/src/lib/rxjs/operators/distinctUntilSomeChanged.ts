@@ -1,7 +1,11 @@
 import { MonoTypeOperatorFunction } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
-import { CompareFn, KeyCompareMap } from '../interfaces';
-import { safePluck } from '../../core/utils/safe-pluck';
+
+import {
+  CompareFn,
+  KeyCompareMap,
+  safePluck,
+} from '@rx-angular/state/internals';
 
 /**
  * @internal
@@ -97,7 +101,7 @@ export function distinctUntilSomeChanged<T extends object, K extends keyof T>(
   if (keyCompareMap !== undefined) {
     const compare = (key: K) => {
       return keyCompareMap.hasOwnProperty(key) &&
-      keyCompareMap[key] !== undefined
+        keyCompareMap[key] !== undefined
         ? (keyCompareMap[key] as CompareFn<T[K]>)
         : defaultCompare;
     };

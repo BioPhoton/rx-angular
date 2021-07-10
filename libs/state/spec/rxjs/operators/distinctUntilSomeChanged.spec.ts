@@ -1,7 +1,7 @@
 // tslint:disable-next-line:nx-enforce-module-boundaries
 import { jestMatcher } from '@test-helpers';
 import { mergeMap } from 'rxjs/operators';
-import { KeyCompareMap } from '../../../src/lib/rxjs/interfaces';
+import { KeyCompareMap } from '@rx-angular/state/internals';
 import { distinctUntilSomeChanged } from '../../../src/lib/rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { TestScheduler } from 'rxjs/testing';

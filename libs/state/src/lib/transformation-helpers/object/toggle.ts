@@ -1,5 +1,6 @@
+import { isDefined, isKeyOf, isObjectGuard } from '@rx-angular/state/internals';
+
 import { OnlyKeysOfSpecificType } from '../interfaces/only-keys-of-specific-type';
-import { isDefined, isKeyOf, isObjectGuard } from '../../core';
 
 /**
  * @description

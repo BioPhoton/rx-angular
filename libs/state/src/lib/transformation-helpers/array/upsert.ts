@@ -1,6 +1,8 @@
-import { isObjectGuard } from '../../core/utils/guards';
-import { valuesComparer } from '../_internals/valuesComparer.util';
-import { ComparableData } from '../interfaces/comparable-data-type';
+import {
+  isObjectGuard,
+  valuesComparer,
+  ComparableData,
+} from '@rx-angular/state/internals';
 
 /**
  * @description

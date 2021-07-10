@@ -8,6 +8,7 @@ module.exports = {
     '<rootDir>/apps/ssr',
     '<rootDir>/libs/test-helpers',
     '<rootDir>/libs/state',
+    '<rootDir>/libs/state/internals',
     '<rootDir>/libs/template',
     '<rootDir>/libs/template/let',
     '<rootDir>/libs/template/push',

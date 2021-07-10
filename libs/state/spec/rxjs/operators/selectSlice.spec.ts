@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { map, mergeMap } from 'rxjs/operators';
 import { TestScheduler } from 'rxjs/testing';
-import { KeyCompareMap } from '../../../src/lib/rxjs/interfaces';
+import { KeyCompareMap } from '@rx-angular/state/internals';
 import { selectSlice } from '../../../src/lib/rxjs/operators/selectSlice';
 
 let testScheduler: TestScheduler;

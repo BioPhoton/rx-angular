@@ -1,4 +1,4 @@
-import { isDefined } from '../../core';
+import { isDefined } from '@rx-angular/state/internals';
 
 /**
  * @description

@@ -1,4 +1,4 @@
-import { safePluck } from '../../../src/lib/core/utils';
+import { safePluck } from './safe-pluck';
 
 interface ISafePluckSpec {
   foo: { bar: string };

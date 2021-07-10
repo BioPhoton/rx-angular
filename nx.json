@@ -1,5 +1,4 @@
 {
-  "npmScope": "rx-angular",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
@@ -11,6 +10,10 @@
     "nx.json": "*",
     ".eslintrc.json": "*"
   },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "npmScope": "rx-angular",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
@@ -62,8 +65,13 @@
         "cdk-zone-less"
       ]
     },
+    "state-internals": {
+      "tags": ["type:internal-lib"],
+      "implicitDependencies": []
+    },
     "state": {
-      "tags": ["type:lib"]
+      "tags": ["type:lib"],
+      "implicitDependencies": ["state-internals"]
     },
     "template": {
       "tags": ["type:lib", "type:template"],
@@ -101,8 +109,5 @@
       "tags": [],
       "implicitDependencies": ["ssr"]
     }
-  },
-  "affected": {
-    "defaultBase": "master"
   }
 }

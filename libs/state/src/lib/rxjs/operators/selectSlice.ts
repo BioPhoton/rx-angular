@@ -1,7 +1,8 @@
 import { KeyCompareMap } from '../interfaces';
 import { Observable, OperatorFunction } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { distinctUntilSomeChanged } from './distinctUntilSomeChanged';
+import { isDevMode } from '@angular/core';
 
 /**
  * @description
@@ -82,6 +83,13 @@ export function selectSlice<T extends object, K extends keyof T>(
 ): OperatorFunction<T, PickSlice<T, K>> {
   return (o$: Observable<T>): Observable<PickSlice<T, K>> =>
     o$.pipe(
+      tap((state) => {
+        if (isDevMode() && state === undefined) {
+          console.warn(
+            '@rx-angular/state#selectSlice WARNING: state is undefined'
+          );
+        }
+      }),
       filter((state) => state !== undefined),
       map((state) => {
         // forward null
@@ -104,20 +112,29 @@ export function selectSlice<T extends object, K extends keyof T>(
         // {str: undefined} => state.select(selectSlice(['str'])) => no emission
         // {str: 'test', foo: undefined } => state.select(selectSlice(['foo'])) => no emission
         if (definedKeys.length < keys.length) {
+          if (isDevMode()) {
+            const undefinedKeys = keys.filter((k) => !definedKeys.includes(k));
+            console.warn(
+              `@rx-angular/state#selectSlice WARNING: undefined value(s) of selected key(s): "${undefinedKeys.join(
+                '", "'
+              )}" selectSlice operator will return undefined`
+            );
+          }
           return undefined;
         }
 
         // create the selected slice
-        return definedKeys
-          .reduce((vm, key) => {
-            vm[key] = state[key];
-            return vm;
-          }, {} as PickSlice<T, K>);
+        return definedKeys.reduce((vm, key) => {
+          vm[key] = state[key];
+          return vm;
+        }, {} as PickSlice<T, K>);
       }),
       filter((v) => v !== undefined),
       distinctUntilSomeChanged(keys, keyCompareMap)
     );
 }
 
-type PickSlice<T extends object, K extends keyof T> = Pick<T,
-  { [I in K]: I }[K]>;
+type PickSlice<T extends object, K extends keyof T> = Pick<
+  T,
+  { [I in K]: I }[K]
+>;
